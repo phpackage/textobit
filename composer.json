@@ -1,0 +1,29 @@
+{
+    "name": "phpackage/textobit",
+    "description": "TextoBit API SDK",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Manuel Mendoza",
+            "email": "alejobit@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Phpackage\\TextoBit\\": "src"
+        }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packagist.org"
+        },
+        {
+            "packagist": false
+        }
+    ],
+    "require": {
+        "rmccue/requests": "^1.7"
+    }
+}
