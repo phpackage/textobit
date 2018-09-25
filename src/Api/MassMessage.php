@@ -2,35 +2,14 @@
 
 namespace Phpackage\TextoBit\Api;
 
-use Phpackage\TextoBit\Client;
 use Phpackage\TextoBit\Entity\Message;
 
-class MassMessage
+class MassMessage extends Api
 {
-    /**
-     * @var Client
-     */
-    private $client;
-
-    /**
-     * @var string
-     */
-    private $profile = 'api';
-
     /**
      * @var Message[]
      */
     private $messages = [];
-
-    public function __construct(Client $client)
-    {
-        $this->client = $client;
-    }
-
-    public static function fromToken($token)
-    {
-        return new self(new Client($token));
-    }
 
     public function send()
     {
@@ -50,9 +29,9 @@ class MassMessage
         return $this;
     }
 
-    public function addRawMessage($addr, $cont)
+    public function addRawMessage($addr, $cont, $type = null)
     {
-        return $this->addMessage(new Message($addr, $cont));
+        return $this->addMessage(new Message($addr, $cont, $type));
     }
 
     public function toArray()
@@ -66,6 +45,8 @@ class MassMessage
                 'type' => (int)$message->getType(),
             ];
         }
+
+        $this->messages = [];
 
         return [
             'profile' => $this->profile,
